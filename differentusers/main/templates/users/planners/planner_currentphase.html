@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %} - Current Phase{% endblock %}
+
+{% block content %}
+
+	<h2>Current Phase</h2>
+	<p>We are currently at Phase {{ user.phase }} - {{ user.get_phase }} </p>
+
+
+<!-- Previous Phase Button -->
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#PrevModal"> Previous Phase
+	</button>
+
+	<!-- Modal -->
+	<div class="modal fade" id="PrevModal" tabindex="-1" role="dialog" aria-labelledby="PrevModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="PrevModalLabel">Move to Previous Phase</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        Are you sure you want to move to back to the previous phase?
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+	        <a class="btn btn-danger" href="{% url 'planners:prevphase' %}" role="button">Yes</a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+<!-- Next Phase Button -->
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#NextModal"> Next Phase
+	</button>
+
+	<!-- Modal -->
+	<div class="modal fade" id="NextModal" tabindex="-1" role="dialog" aria-labelledby="NextModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="PrevModalLabel">Move to Next Phase</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        Are you sure you want to move on to the next phase?
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+	        <a class="btn btn-danger" href="{% url 'planners:nextphase' %}" role="button">Yes</a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+
+	{% if user.phase == 3 %}
+
+	<!-- Revert Button -->
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#RevertModal"> Revert to Phase 1
+	</button>
+
+	<!-- Modal -->
+	<div class="modal fade" id="RevertModal" tabindex="-1" role="dialog" aria-labelledby="RevertModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="RevertModalLabel">Revert to Phase 1</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        Are you sure you want to <strong>delete all database records</strong> and move to <strong>Phase 1</strong>?
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+	        <a class="btn btn-danger" href="{% url 'planners:revert' %}" role="button">Yes</a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+		
+
+	{% else %}
+                  
+    {% endif %}
+
+{% endblock %}

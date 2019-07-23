@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Welcome to SUTDCalendar</h2>
+  <p>
+    SUTDCalendar is a secure gateway that assists timetabling processes by providing an efficient means to deconflict timetable clashes and to easily visually identify timetable clashes. It also provides a convenient tool by which you may easily stage your timetable planning phases, allowing planners full control over the process and reducing the amount of manual labour required in deconflicting what is oftentimes a messy, multi-dimensional problem.
+    <br><br>
+    <i>Be done with tomorrow's planning, today!</i>
+  </p>
+  
+  <hr>
+
+  <p>
+    If you already have an account, click <a href="{% url 'login' %}">here to log in</a>.
+  </p>
+  
+{% endblock %}

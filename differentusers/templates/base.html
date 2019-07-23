@@ -1,0 +1,97 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SUTDCal {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+  </head>
+  <body>
+
+    <div class="container my-4">
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-12">
+          <div class="row">
+
+          <nav class="navbar navbar-expand-lg navbar-light bg-light col-12 mb-3">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <a class="navbar-brand" href="{% url 'home' %}">
+              <img src="{% static 'img/sutdlogo.png' %}" width="130" height="30" class="d-inline-block align-top" alt="">
+              Calendar
+            </a>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {% if user.get_user_type == 'Professor' %}
+                  {% include 'professor_navbar.html' %}
+
+                {% elif user.get_user_type == 'Timetable Planner' %}
+                  {% include 'planner_navbar.html' %}
+
+                {% elif user.get_user_type == 'Event Planner' %}
+                  {% include 'eventplanner_navbar.html' %}
+                
+                {% elif user.get_user_type == 'Course Coordinator' %}
+                  {% include 'coordinator_navbar.html' %}
+
+                {% elif user.get_user_type == 'Student' %}
+                  {% include 'student_navbar.html' %}
+                
+
+                {% else %}
+                  
+                {% endif %}
+
+              </div>
+
+            <div class="form-inline my-2">
+              {% if user.is_authenticated %}
+                <p class="pt-3">Logged in as <strong>{{ user.first_name }} {{ user.last_name }}</strong>. <a href="{% url 'logout' %}">Log out</a>.</p>
+              {% else %}
+                <a href="{% url 'login' %}" class="btn btn-light" role="button">Log in</a>
+                <a href="{% url 'signup' %}" id="id_signup" class="btn btn-primary" role="button">Sign up</a>
+              {% endif %}
+            </div>
+
+
+          </nav>
+
+          </div>
+          <div class="mb-2">
+            <div class="card-body">
+              {% for message in messages %}
+                <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+                  {{ message }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              {% endfor %}
+              
+              {% block content %}
+              {% endblock %}
+            </div>
+          </div>
+          <footer>
+
+            
+          </footer>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+      })
+    </script>
+  </body>
+</html>

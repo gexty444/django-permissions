@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h2>Welcome to SUTDCalendar!</h2>
+	<p>As a professor, SUTDCalendar is your secure gateway to submit/view/amend the details of your courses and suggest amendments to the Calendar drafts. You will also be able to view the Calendar and export it.
+	
+	<hr>
+
+	<h2>Current Phase</h2>
+	<p>We are currently at Phase {{ user.phase }} - {{ user.get_phase }} </p>
+
+
+{% endblock %}

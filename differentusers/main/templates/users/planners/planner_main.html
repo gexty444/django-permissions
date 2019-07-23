@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+	<h2>Welcome to SUTDCalendar!</h2>
+	<p>As a timetable planner, SUTDCalendar is your secure gateway to export all the course details. You are also able to upload the first draft (following the sample), accept modification suggestions and finalise the calendar.
+	
+	<hr>
+
+	<h2>Current Phase</h2>
+	<p>We are currently at Phase {{ user.phase }} - {{ user.get_phase }} </p>
+
+
+{% endblock %}
