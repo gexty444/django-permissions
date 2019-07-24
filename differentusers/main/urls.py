@@ -28,5 +28,5 @@ urlpatterns = [
 
     path('event/', include(([
         path('', eventplanners.EventPlannerMainView.as_view(), name='eventplanner_main'),
-    ], 'main'), namespace='eventplanner')),
+    ], 'main'), namespace='eventplanners')),
 ]

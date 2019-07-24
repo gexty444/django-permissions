@@ -21,8 +21,8 @@ def home(request):
         	return redirect('coordinators:coordinator_main')
         elif request.user.user_type == usertypes['timetableplanner']:
             return redirect('planners:planner_main')
-        elif request.user.user_type == usertypes['sutdadmin']:
-            return redirect('sutdadmin:sutdadmin_main')
+        elif request.user.user_type == usertypes['eventplanners']:
+            return redirect('eventplanners:eventplanner_main')
         else:
             return redirect('students:student_main')
     return render(request, 'users/home.html')

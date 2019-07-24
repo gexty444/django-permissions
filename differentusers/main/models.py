@@ -13,7 +13,7 @@ usertypes = {
 
 USER_TYPE_CHOICES = (
     (1, 'professor'),
-    (2, 'eventplanner'),
+    (2, 'eventplanners'),
     (3, 'coursecoordinators'),
     (4, 'timetableplanner'),
     (5, 'student'),
@@ -37,7 +37,7 @@ class User(AbstractUser):
             return 'Professor'
         elif self.user_type == usertypes['coursecoordinators']:
             return 'Course Coordinator'
-        elif self.user_type == usertypes['eventplanner']:
+        elif self.user_type == usertypes['eventplanners']:
             return 'Event Planner'
         elif self.user_type == usertypes['timetableplanner']:
             return 'Timetable Planner'
