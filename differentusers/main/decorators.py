@@ -84,7 +84,7 @@ def planner_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, log
         return actual_decorator(function)
     return actual_decorator
 
-def beforefirstdraft_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url='403'):
+def phase1_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url='403'):
     '''
     Decorator for views that checks that the current phase if phase 1
     redirects to the home page if necessary.
@@ -98,7 +98,7 @@ def beforefirstdraft_required(function=None, redirect_field_name=REDIRECT_FIELD_
         return actual_decorator(function)
     return actual_decorator
 
-def drafting_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url='403'):
+def phase2_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url='403'):
     '''
     Decorator for views that checks that the current phase is phase 2
     redirects to the home page if necessary.
@@ -112,7 +112,7 @@ def drafting_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, lo
         return actual_decorator(function)
     return actual_decorator
 
-def finalisation_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url='403'):
+def phase3_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url='403'):
     '''
     Decorator for views that checks that the current phase is phase 3
     redirects to the home page if necessary.

@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, TemplateView, View
 
-from ..decorators import planner_required, finalisation_required
+from ..decorators import planner_required, phase3_required
 from ..forms import PlannerSignUpForm
 from ..models import User
 
@@ -71,7 +71,7 @@ class PreviousPhase(View):
         # User.objects.all().update(phase=1)
         return redirect('planners:currentphase')
 
-@method_decorator([login_required, planner_required, finalisation_required], name='dispatch')
+@method_decorator([login_required, planner_required, phase3_required], name='dispatch')
 class RevertToPhase1(View):
 
     def get(self, request, *args, **kwargs):
